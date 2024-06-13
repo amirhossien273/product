@@ -4,11 +4,13 @@ const ProtectAuthRoutesLayout = () => {
 
 
   
-  
+  const user = localStorage.getItem("user-token")
+  ? JSON.parse(localStorage.getItem("user-token"))
+  : null ;
     
-    // return <>{auth.status == "success"  ? <Navigate to={DefaultRoute} />  : auth.status == "false" ? <Outlet /> : <>sss</>}</>;
+  return <>{user == null   ? <Navigate to={'/auth/login'} />  : <Outlet /> }</>;
   
-    return <><Outlet /></>;
+    // return <><Outlet /></>;
   };
   
   export default ProtectAuthRoutesLayout;

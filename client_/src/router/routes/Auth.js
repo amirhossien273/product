@@ -8,14 +8,15 @@ const LazyLogin= lazy(() =>
   import("../../page/auth/login")
 );
 
-const LazyProtectAuthRoutesLayout= lazy(() =>
-  import("../../layouts/ProtectAuthRoutesLayout")
+const LazyProtectPublicRoutesLayout= lazy(() =>
+  import("../../layouts/ProtectPublicRoutesLayout")
 );
+
 
 const AuthRouter = [
   {
     path:'auth',
-    element: <LazyProtectAuthRoutesLayout />,
+    element: <LazyProtectPublicRoutesLayout />,
     children:[
       {
         path: "register",

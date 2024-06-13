@@ -5,7 +5,7 @@ import { signupServer } from '../../redux/auth/register';
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
   });
@@ -31,13 +31,13 @@ const Register = () => {
         <h2 className="text-center mb-4">Register</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="username" className="form-label">Username</label>
+            <label htmlFor="username" className="form-label">name</label>
             <input
               type="text"
               className="form-control"
-              id="username"
-              name="username"
-              value={formData.username}
+              id="name"
+              name="name"
+              value={formData.name}
               onChange={handleChange}
               required
             />

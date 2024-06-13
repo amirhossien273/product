@@ -1,25 +1,16 @@
-// import {  useDispatch, useSelector } from "react-redux";
-// import { Navigate, Outlet } from "react-router-dom";
-// import { DefaultRoute } from "../router/routes/index.js";
-// import { useEffect } from "react";
-// import {authService} from "../redux/auth/auth";
-// import SigninFormComponent from "../components/auth/SigninFormComponent";
+import { Navigate, Outlet } from "react-router-dom";
 
-// const ProtectAuthRoutesLayout = () => {
-//   const { auth } = useSelector((s) => s);
-//   const { signin } = useSelector((s) => s);
-//   const dispatch = useDispatch();
-//   useEffect( () => {
-//     // setTimeout( () => {
-//       dispatch(authService());
-//     // },20000000000);
-//   },[signin]);
+const ProtectPublicRoutesLayout = () => {
 
 
   
-//   return <>{auth.status == "success"  ? <Navigate to={DefaultRoute} />  : auth.status == "false" ? <Outlet /> : <>sss</>}</>;
-
-//   // return <>{user?.id ? <Navigate to={DefaultRoute} /> : <Outlet />}</>;
-// };
-
-// export default ProtectAuthRoutesLayout;
+  const user = localStorage.getItem("user-token")
+  ? JSON.parse(localStorage.getItem("user-token"))
+  : null ;
+    
+  return <>{user !== null   ? <Navigate to={'/products'} />  : <Outlet /> }</>;
+  
+    // return <><Outlet /></>;
+  };
+  
+  export default ProtectPublicRoutesLayout;

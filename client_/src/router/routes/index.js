@@ -2,12 +2,16 @@
 import { Fragment, lazy } from "react";
 import { Navigate } from "react-router-dom";
 import AuthRouter from "./Auth";
+import CommentRouter from "./Comment";
+import ProductRouter from "./Product";
 
 const DefaultRoute = "/profile";
 
 // ** Merge Routes
 const Routes = [
-  ...AuthRouter
+  ...AuthRouter,
+  ...CommentRouter,
+  ...ProductRouter
 ];
 
 const MergeLayoutRoutes = () => {

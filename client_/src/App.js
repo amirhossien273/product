@@ -3,12 +3,14 @@ import React, {Suspense } from 'react';
 
 
 import Router from './router/Router' 
+import { Toaster } from 'react-hot-toast';
 
 
 
 function App() {
   return (
     <Suspense fallback={null}>
+      <div><Toaster/></div>
       <Router />
     </Suspense>
   );

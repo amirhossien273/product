@@ -9,11 +9,11 @@ const initialState = {
     loading: false,
   };
 
-export const signinServer = createAsyncThunk(
-    "signin",
+export const storeCommentServer = createAsyncThunk(
+    "storeComment",
     async(payload, { rejectWithValue }) => {
         try {
-        const response = await Api.signin(payload);
+        const response = await Api.storeComment(payload);
         return response;
     } catch (err) {
         return rejectWithValue(err.response);
@@ -21,23 +21,22 @@ export const signinServer = createAsyncThunk(
     }
 );
 
-const signinSlice = createSlice({
-    name: "signin",
+const storeCommentSlice = createSlice({
+    name: "storeComment",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(signinServer.pending, (state) => {
+        builder.addCase(storeCommentServer.pending, (state) => {
             state.loading = true;
             state.data = {};
           });
-          builder.addCase(signinServer.fulfilled, (state, action) => {
-            localStorage.setItem("user-token", JSON.stringify(action.payload));
+          builder.addCase(storeCommentServer.fulfilled, (state, action) => {
             state.loading = false;
             state.data =  action.payload;
             state.error = "";
             toast.success("inserted successfuluy");
           });
-          builder.addCase(signinServer.rejected, (state, action) => {
+          builder.addCase(storeCommentServer.rejected, (state, action) => {
             state.loading = false;
             state.data = {};
             state.error = action.payload?.data?.message || action.payload?.errors;
@@ -46,6 +45,6 @@ const signinSlice = createSlice({
     }
 })
 
-export const {} = signinSlice.actions;
+export const {} = storeCommentSlice.actions;
 
-export default signinSlice.reducer;
+export default storeCommentSlice.reducer;

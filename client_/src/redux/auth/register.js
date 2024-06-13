@@ -35,14 +35,14 @@ const signupSlice = createSlice({
             state.loading = false;
             state.data =  action.payload;
             state.error = "";
-            toast.success("success");
+            toast.success("inserted successfuluy");
            
           });
           builder.addCase(signupServer.rejected, (state, action) => {
             state.loading = false;
             state.data = {};
             state.error = action.payload?.data?.message || action.payload?.errors;
-            toast.error('error');
+            toast.error(action.payload?.data?.error);
           
           });
     }
